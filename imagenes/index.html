@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxia 31 — Imágenes y material descargable</title>
+<meta name="description" content="Imágenes, planos y vídeo de Galaxia 31 en alta resolución para agencias inmobiliarias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+  :root{
+    --cream:#FAF7F1;
+    --cream2:#F1EAD9;
+    --terracotta:#C1451A;
+    --terracotta-dark:#9C3712;
+    --navy:#2F5578;
+    --charcoal:#2A2420;
+    --charcoal-soft:#5C544C;
+    --line:#E3D9C6;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0 0 12px;letter-spacing:-0.01em;}
+  a{color:var(--terracotta-dark);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;background:rgba(250,247,241,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:50;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+  .brand img{width:38px;height:38px;border-radius:50%;}
+  .brand span{font-family:'Fraunces',serif;font-weight:700;font-size:19px;letter-spacing:.02em;}
+  nav.links{display:flex;gap:26px;font-size:14px;font-weight:500;}
+  nav.links a{color:var(--charcoal);text-decoration:none;}
+  nav.links a:hover{color:var(--terracotta-dark);}
+
+  .top{padding:48px 0 8px;}
+  .kicker{color:var(--terracotta-dark);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+  .top p{color:var(--charcoal-soft);font-size:15.5px;max-width:720px;margin:0 0 22px;}
+
+  .bulk{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:36px;}
+  .bulk p{margin:0;font-size:13.5px;color:var(--charcoal-soft);}
+  .btn{background:var(--terracotta);color:#fff;padding:11px 20px;border-radius:var(--radius);font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;border:none;cursor:pointer;font-family:inherit;}
+  .btn:hover{background:var(--terracotta-dark);}
+  .btn[disabled]{opacity:.6;cursor:wait;}
+  #bulk-status{font-size:12px;color:var(--charcoal-soft);margin-top:6px;}
+
+  section{padding:0 0 48px;}
+  section h2{font-size:19px;margin-bottom:16px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .card img,.card video{width:100%;height:140px;object-fit:cover;background:var(--cream2);}
+  .card .meta{padding:10px 12px 12px;}
+  .card .fname{font-size:11.5px;color:var(--charcoal-soft);word-break:break-all;margin-bottom:8px;}
+  .card a.dl{display:inline-block;font-size:12.5px;font-weight:600;color:var(--terracotta-dark);text-decoration:none;}
+  .card a.dl:hover{text-decoration:underline;}
+
+  footer{background:#241f1a;color:#cbc3b6;padding:34px 0;margin-top:20px;}
+  footer .wrap{font-size:12.5px;}
+  footer a{color:#e4dccb;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="../"><img src="../img/logo.jpg" alt="Galaxia 31" onerror="this.remove()"><span>GALAXIA 31</span></a>
+    <nav class="links">
+      <a href="../">← Volver a la página del proyecto</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap top">
+  <div class="kicker">Material para agencias</div>
+  <h1>Imágenes y planos de Galaxia 31</h1>
+  <p>Renders, fotos de las unidades, planos individuales y vídeo en alta resolución, listos para descargar y usar en tus propias fichas o presentaciones. Todas las imágenes son orientativas y no constituyen compromiso contractual.</p>
+
+  <div class="bulk">
+    <div>
+      <strong style="font-size:14px;">Descargar todo en un ZIP</strong>
+      <p>Incluye todas las imágenes, planos y el vídeo de esta página.</p>
+      <div id="bulk-status"></div>
+    </div>
+    <button class="btn" id="bulk-btn" onclick="downloadAllZip()">Descargar todo (.zip)</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>El edificio</h2>
+  <div class="grid" id="grid-edificio"></div>
+</section>
+
+<section>
+  <h2>El proyecto — fachada</h2>
+  <div class="grid" id="grid-proyecto"></div>
+</section>
+
+<section>
+  <h2>Planos por vivienda</h2>
+  <div class="grid" id="grid-planos"></div>
+</section>
+
+<section>
+  <h2>Fotos por vivienda</h2>
+  <div class="grid" id="grid-unidades"></div>
+</section>
+
+<section>
+  <h2>Vídeo</h2>
+  <div class="grid" id="grid-video"></div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Cooperativa de Vivienda · Puerto de la Torre · Málaga. Uso exclusivo para agencias colaboradoras — las imágenes, infografías, renders, planos y vídeo son representaciones orientativas con fines ilustrativos y no constituyen compromiso contractual.
+  </div>
+</footer>
+
+<script>
+  var FILES = {
+    'grid-edificio': ['patio.jpg','interior1.jpg','bathroom.jpg','Imagen_04.png','Imagen_07.png','Imagen_07_style_transfer01.png','Imagen_08.png','Imagen_09.png','Imagen_10.png','Escena 6.png'],
+    'grid-proyecto': ['Imagen_11.png','Imagen_03.png'],
+    'grid-planos': ['Plan_Vivienda_B-1.jpeg','Plan_Vivienda_1-1.jpeg','Plan_Vivienda_B-2.jpeg','Plan_Vivienda_1-2.jpeg','Plan_Vivienda_B-3.jpeg','Plan_Vivienda_1-3.jpeg'],
+    'grid-unidades': ['IMAGEN_OK_B-1.png','IMAGEN_OK_B1.png','IMAGEN_OK_B1_2.png','IMAGEN_OK_16_B1.png','IMAGEN_OK_1-1.png','IMAGEN_OK_1-1_2.png','IMAGEN_OK_1-1_3.png','IMAGEN_OK_14_B2.png','IMAGEN_OK_18_B2.png','IMAGEN_OK_1-2.png','IMAGEN_OK_1-2_2.png','IMAGEN_OK_B3.png','IMAGEN_OK_B3-1.png','IMAGEN_OK_1-3.png','IMAGEN_OK_1-3_2.png','IMAGEN_OK_1-3_3.png']
+  };
+  var VIDEOS = ['Hero.mp4'];
+
+  function cardFor(name, isVideo){
+    var path = '../img/' + encodeURIComponent(name).replace(/%2F/g,'/');
+    var div = document.createElement('div');
+    div.className = 'card';
+    var media = isVideo
+      ? '<video src="'+path+'" muted onerror="this.closest(\'.card\').remove()"></video>'
+      : '<img src="'+path+'" alt="'+name+'" loading="lazy" onerror="this.closest(\'.card\').remove()">';
+    div.innerHTML = media + '<div class="meta"><div class="fname">'+name+'</div><a class="dl" href="'+path+'" download="'+name+'">Descargar ↓</a></div>';
+    return div;
+  }
+
+  Object.keys(FILES).forEach(function(gridId){
+    var grid = document.getElementById(gridId);
+    FILES[gridId].forEach(function(name){ grid.appendChild(cardFor(name, false)); });
+  });
+  VIDEOS.forEach(function(name){ document.getElementById('grid-video').appendChild(cardFor(name, true)); });
+
+  function allFileNames(){
+    var all = VIDEOS.slice();
+    Object.keys(FILES).forEach(function(k){ all = all.concat(FILES[k]); });
+    return all;
+  }
+
+  async function downloadAllZip(){
+    var btn = document.getElementById('bulk-btn');
+    var status = document.getElementById('bulk-status');
+    if (typeof JSZip === 'undefined'){
+      status.textContent = 'No se pudo cargar la herramienta de compresión (revisa tu conexión o si un bloqueador de anuncios está frenando cdnjs.cloudflare.com). Puedes descargar las imágenes una a una más abajo.';
+      return;
+    }
+    btn.disabled = true;
+    var zip = new JSZip();
+    var names = allFileNames();
+    var ok = 0, failed = [];
+    for (var i = 0; i < names.length; i++){
+      var name = names[i];
+      status.textContent = 'Descargando ' + (i+1) + '/' + names.length + '…';
+      try {
+        var res = await fetch('../img/' + encodeURIComponent(name).replace(/%2F/g,'/'));
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var blob = await res.blob();
+        zip.file(name, blob);
+        ok++;
+      } catch(e){
+        failed.push(name);
+      }
+    }
+    if (ok === 0){
+      status.textContent = 'No se pudo descargar ningún archivo. Revisa que las imágenes estén subidas en la carpeta img/.';
+      btn.disabled = false;
+      return;
+    }
+    status.textContent = 'Comprimiendo ' + ok + ' archivos…';
+    var content = await zip.generateAsync({type:'blob'});
+    var url = URL.createObjectURL(content);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'galaxia31-imagenes.zip';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    status.textContent = ok + ' archivos incluidos.' + (failed.length ? (' ' + failed.length + ' no encontrados (omitidos): ' + failed.join(', ')) : '');
+    btn.disabled = false;
+  }
+</script>
+
+</body>
+</html>

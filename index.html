@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxia 31 — Cooperativa de Vivienda · Puerto de la Torre, Málaga</title>
+<meta name="description" content="Galaxia 31: cooperativa de vivienda de 6 viviendas de obra nueva en Puerto de la Torre, Málaga. Precio de coste real, sin margen de promotor externo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF7F1;
+    --cream2:#F1EAD9;
+    --terracotta:#C1451A;
+    --terracotta-dark:#9C3712;
+    --navy:#2F5578;
+    --charcoal:#2A2420;
+    --charcoal-soft:#5C544C;
+    --line:#E3D9C6;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--cream);color:var(--charcoal);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;margin:0 0 12px;letter-spacing:-0.01em;}
+  a{color:var(--terracotta-dark);}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;background:rgba(250,247,241,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:50;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{width:38px;height:38px;border-radius:50%;}
+  .brand span{font-family:'Fraunces',serif;font-weight:700;font-size:19px;letter-spacing:.02em;}
+  nav.links{display:flex;gap:26px;font-size:14px;font-weight:500;}
+  nav.links a{color:var(--charcoal);text-decoration:none;}
+  nav.links a:hover{color:var(--terracotta-dark);}
+  .nav-cta{background:var(--terracotta);color:#fff;padding:9px 16px;border-radius:var(--radius);font-size:13.5px;font-weight:600;text-decoration:none;white-space:nowrap;}
+
+  .hero{position:relative;width:100%;aspect-ratio:16/9;max-height:78vh;min-height:320px;overflow:hidden;}
+  .hero-img,.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,15,10,.72) 0%, rgba(20,15,10,.15) 55%, rgba(20,15,10,.05) 100%);}
+  .hero-text{position:absolute;bottom:0;left:0;right:0;padding:40px 0 34px;color:#fff;}
+  .eyebrow{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);padding:5px 13px;border-radius:20px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+  .hero-text h1{font-size:44px;color:#fff;margin-bottom:8px;}
+  .hero-text p{font-size:16px;max-width:560px;color:#f1ece2;margin:0;}
+  .hero-stats{display:flex;gap:34px;margin-top:22px;flex-wrap:wrap;}
+  .hero-stats .n{font-size:22px;font-weight:700;font-family:'Fraunces',serif;}
+  .hero-stats .l{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:#e4dccb;}
+
+  section{padding:64px 0;}
+  section.alt{background:var(--cream2);}
+  .kicker{color:var(--terracotta-dark);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+  .section-head{max-width:640px;margin-bottom:36px;}
+  .section-head p{color:var(--charcoal-soft);font-size:15.5px;margin:0;}
+
+  .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;}
+  .fact-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:18px;}
+  .fact-table td{padding:9px 0;border-bottom:1px solid var(--line);}
+  .fact-table td:first-child{color:var(--charcoal-soft);width:40%;}
+  .fact-table td:last-child{font-weight:600;}
+
+  .coop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:10px;}
+  .coop-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
+  .coop-card .ico{width:34px;height:34px;border-radius:50%;background:var(--cream2);color:var(--terracotta-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Fraunces',serif;margin-bottom:12px;}
+  .coop-card h4{font-size:15px;margin-bottom:6px;}
+  .coop-card p{font-size:13px;color:var(--charcoal-soft);margin:0;}
+
+  .phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;}
+  .phase{border-left:2px solid var(--terracotta);padding-left:16px;}
+  .phase .tag{font-size:11px;font-weight:700;color:var(--terracotta-dark);letter-spacing:.05em;text-transform:uppercase;}
+  .phase h4{font-size:15px;margin:6px 0;}
+  .phase p{font-size:13px;color:var(--charcoal-soft);margin:0;}
+
+  .unit-block{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;margin-bottom:22px;}
+  .unit-block img{width:100%;height:100%;object-fit:contain;background:#fff;}
+  .unit-info{padding:28px 30px;}
+  .unit-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+  .unit-name{font-family:'Fraunces',serif;font-size:24px;font-weight:700;}
+  .unit-type{color:var(--charcoal-soft);font-size:13.5px;margin-bottom:14px;}
+  .unit-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:5px 11px;border-radius:20px;white-space:nowrap;}
+  .badge-disp{background:#E3EEE3;color:#33683A;}
+  .badge-estudio{background:#E4EBF2;color:#2F5578;}
+  .badge-1dorm{background:#F5E9DC;color:#9C3712;}
+  .price-box{background:var(--cream2);border-radius:var(--radius);padding:14px 16px;margin:14px 0 18px;}
+  .price-box .p-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--charcoal-soft);}
+  .price-box .p-val{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--terracotta-dark);}
+  .spec-list{list-style:none;padding:0;margin:0 0 16px;font-size:13.5px;}
+  .spec-list li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);}
+  .spec-list li span:first-child{color:var(--charcoal-soft);}
+  .spec-list li span:last-child{font-weight:600;}
+
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px;}
+  .loc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .loc-card .cap{padding:14px 18px;font-size:13.5px;color:var(--charcoal-soft);}
+
+  .market-row{display:flex;gap:40px;align-items:center;margin-top:26px;flex-wrap:wrap;}
+  .market-row img{max-width:340px;}
+
+  .gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:10px;}
+  .gallery img{border-radius:var(--radius);height:100%;object-fit:cover;display:block;}
+  .gallery .tall{grid-row:span 2;}
+  .gallery figure{margin:0;}
+  .gallery figcaption{font-size:10.5px;color:var(--charcoal-soft);margin-top:5px;}
+
+  .unit-table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0 18px;}
+  .unit-table th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--charcoal-soft);font-weight:600;padding:6px 8px 6px 0;border-bottom:1px solid var(--line);}
+  .unit-table td{padding:9px 8px 9px 0;border-bottom:1px dashed var(--line);}
+  .unit-table td:first-child{font-weight:700;}
+  .unit-table td:last-child{font-family:'Fraunces',serif;font-weight:700;color:var(--terracotta-dark);}
+
+  .unit-lead{font-size:14px;color:var(--charcoal-soft);margin:0 0 16px;}
+  .floor-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px;}
+  .floor-card{background:var(--cream2);border-radius:var(--radius);padding:16px 18px;}
+  .floor-card .f-tag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--terracotta-dark);}
+  .floor-card .f-price{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;}
+  .offer-list{list-style:none;padding:0;margin:0;font-size:12.5px;}
+  .offer-list li{padding:4px 0 4px 15px;position:relative;color:var(--charcoal-soft);}
+  .offer-list li::before{content:"—";position:absolute;left:0;color:var(--terracotta);}
+
+  .unit-acc{border:1px solid var(--line);border-radius:var(--radius);background:#fff;margin-bottom:14px;overflow:hidden;}
+  .unit-acc summary{cursor:pointer;list-style:none;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .unit-acc summary::-webkit-details-marker{display:none;}
+  .unit-acc summary .u-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .unit-acc summary .u-name{font-family:'Fraunces',serif;font-size:21px;font-weight:700;}
+  .unit-acc summary .u-price{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--terracotta-dark);white-space:nowrap;}
+  .unit-acc summary .u-arrow{font-size:18px;color:var(--terracotta-dark);transition:transform .2s;flex-shrink:0;}
+  .unit-acc[open] summary .u-arrow{transform:rotate(180deg);}
+  .unit-acc .u-body{padding:2px 26px 28px;display:grid;grid-template-columns:1fr 1fr;gap:28px;border-top:1px solid var(--line);padding-top:22px;}
+  .unit-acc .u-body img{border-radius:var(--radius);width:100%;}
+  .unit-photo-note{font-size:12px;color:var(--charcoal-soft);font-style:italic;margin-top:8px;}
+  .unit-photos{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .unit-photos img{border-radius:var(--radius);width:calc(50% - 4px);flex:1 1 calc(50% - 4px);height:110px;object-fit:cover;}
+  @media (max-width:860px){ .unit-acc .u-body{grid-template-columns:1fr;} }
+
+  footer{background:var(--charcoal);color:#c9c1b6;padding:40px 0 30px;font-size:12.5px;}
+  footer .flogo{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+  footer .flogo img{width:30px;height:30px;border-radius:50%;}
+  footer .flogo span{font-family:'Fraunces',serif;color:#fff;font-weight:700;font-size:16px;}
+  footer p{max-width:820px;margin:0 0 10px;color:#a99f92;}
+  footer .legal-note{background:#3a332c;border-radius:6px;padding:14px 16px;margin-top:16px;font-size:11.5px;color:#cbb99a;}
+  .faq-acc{border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden;}
+  .faq-acc summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:14.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .faq-acc summary::-webkit-details-marker{display:none;}
+  .faq-acc summary .f-arrow{font-size:16px;color:var(--terracotta-dark);transition:transform .2s;flex-shrink:0;}
+  .faq-acc[open] summary .f-arrow{transform:rotate(180deg);}
+  .faq-acc p{font-size:13.5px;color:var(--charcoal-soft);margin:0;padding:0 18px 16px;}
+
+  @media (max-width: 860px){
+    .grid-2, .unit-block, .loc-grid, .coop-grid, .phase-row{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr 1fr;}
+    .gallery .tall{grid-row:auto;}
+    nav.links{display:none;}
+    .hero{aspect-ratio:auto;height:66vh;min-height:480px;max-height:600px;}
+    .hero-text h1{font-size:27px;}
+    .hero-text p{max-width:none;}
+    .hero-stats{gap:20px;}
+    .unit-acc summary{flex-direction:column;align-items:flex-start;gap:8px;padding:18px 20px;}
+    .unit-acc summary .u-price{white-space:normal;}
+    .unit-acc summary .u-arrow{position:absolute;top:20px;right:20px;}
+    .unit-acc summary{position:relative;padding-right:40px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><img src="img/logo.jpg" alt="Galaxia 31"><span>GALAXIA 31</span></div>
+    <nav class="links">
+      <a href="#proyecto">El proyecto</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <video class="hero-video" src="img/Hero.mp4" poster="img/Imagen_04.png" autoplay muted loop playsinline></video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text wrap">
+    <span class="eyebrow">Cooperativa de Vivienda · Obra Nueva · Puerto de la Torre, Málaga</span>
+    <h1>Tu vivienda nueva, sin pagar el margen del promotor.</h1>
+    <p>6 viviendas de obra nueva en Puerto de la Torre, Málaga, en régimen de cooperativa de autopromoción — al precio de coste real de la construcción.</p>
+    <div class="hero-stats">
+      <div><div class="n">6</div><div class="l">Viviendas</div></div>
+      <div><div class="n">10%</div><div class="l">IVA (obra nueva)</div></div>
+      <div><div class="n">✓</div><div class="l">Licencia de obras concedida</div></div>
+      <div><div class="n">2</div><div class="l">Plantas + sótano</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">El edificio</div>
+      <h2>Vida al aire libre, dentro de casa</h2>
+      <p>Patios privados en planta baja, balcón en primera planta y una azotea comunitaria pensada para el día a día — no solo renders, así se vive Galaxia 31.</p>
+    </div>
+    <div class="gallery">
+      <img class="tall" src="img/patio.jpg" alt="Patio privado">
+      <img src="img/interior1.jpg" alt="Interior salón">
+      <img src="img/bathroom.jpg" alt="Baño">
+      <img src="img/Imagen_07.png" alt="Galaxia 31" onerror="this.remove()">
+      <img src="img/Imagen_07_style_transfer01.png" alt="Galaxia 31" onerror="this.remove()">
+      <img src="img/Imagen_08.png" alt="Galaxia 31" onerror="this.remove()">
+      <img src="img/Imagen_09.png" alt="Galaxia 31" onerror="this.remove()">
+      <img src="img/Imagen_10.png" alt="Galaxia 31" onerror="this.remove()">
+      <img src="img/Escena%206.png" alt="Galaxia 31" onerror="this.remove()">
+    </div>
+    <figure style="margin:14px 0 0;">
+      <img src="img/Imagen_04.png" alt="Zona comunitaria en cubierta" style="border-radius:var(--radius);width:100%;">
+      <figcaption style="font-size:10.5px;color:var(--charcoal-soft);margin-top:6px;">Zona comunitaria en cubierta con jacuzzi previsto — imagen orientativa; su incorporación definitiva está sujeta a la decisión final del promotor y no constituye un elemento garantizado del proyecto.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="proyecto">
+  <div class="wrap grid-2">
+    <div>
+      <div class="kicker">El proyecto</div>
+      <h2>Vivienda de obra nueva al precio de coste real</h2>
+      <p style="color:var(--charcoal-soft);font-size:15.5px;"><strong>Diseño pensado para vivir, no solo para invertir:</strong> patios privados, luz natural en todas las estancias y acabados de primera calidad — estructura y cimentación de hormigón armado, aislamiento térmico y acústico reforzado, doble acristalamiento Climalit y puerta de entrada blindada lacada.</p>
+      <p style="color:var(--charcoal-soft);font-size:15.5px;">Galaxia 31 es una promoción de 6 viviendas de obra nueva en régimen de cooperativa, ubicada en la Calle Argamasilla de Calatrava 11, con acceso peatonal por la Calle Galaxia frente al número 31, en el barrio de Puerto de la Torre, Málaga capital. El edificio ocupa dos plantas más sótano. Diseño contemporáneo sobre tipología andaluza.</p>
+      <table class="fact-table">
+        <tr><td>Dirección</td><td>C/ Argamasilla de Calatrava 11 · Puerto de la Torre, Málaga</td></tr>
+        <tr><td>Promotor</td><td>Ruabella Consulting, S.L.</td></tr>
+        <tr><td>Arquitecto</td><td>Ricardo M. Medina Bujalance · COAMÁLAGA 1.311</td></tr>
+        <tr><td>Régimen</td><td>Cooperativa de autopromoción · IVA 10%</td></tr>
+        <tr><td>Licencia</td><td>Licencia de obras concedida</td></tr>
+        <tr><td>Trasteros</td><td>Incluidos (9,78–17,74 m² según vivienda) · 13 adicionales opcionales en sótano</td></tr>
+        <tr><td>Certificación energética</td><td>A/B (prevista)</td></tr>
+      </table>
+    </div>
+    <div>
+      <img src="img/Imagen_11.png" alt="Galaxia 31 - fachada" style="border-radius:6px;" onerror="this.remove()">
+      <img src="img/Imagen_03.png" alt="Galaxia 31" style="border-radius:6px;margin-top:14px;" onerror="this.remove()">
+    </div>
+  </div>
+</section>
+
+<section id="unidades">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Las viviendas</div>
+      <h2>6 unidades, 3 tipologías</h2>
+      <p>Dos plantas de viviendas sobre sótano de trasteros: 3 tipologías (estudio, 1 dormitorio, 2 dormitorios), cada una repetida en planta baja (con patio privado) y primera planta. Precios y disponibilidad según listado actualizado.</p>
+    </div>
+
+    <details class="unit-acc" name="unidad-acc" open>
+      <summary><span class="u-left"><span class="u-name">B-1</span><span class="unit-badge badge-disp">2 dormitorios · Planta baja</span></span><span class="u-price">334.500 € · 63,57 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_B-1.jpeg" alt="Plano B-1"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_B-1.png" alt="B-1" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_B1.png" alt="B-1" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_B1_2.png" alt="B-1" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_16_B1.png" alt="B-1" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Vivienda de dos dormitorios en planta baja con acceso directo a un patio privado de uso exclusivo. Dos dormitorios con baño propio cada uno, cocina independiente separada del salón-comedor.</p>
+          <ul class="offer-list">
+            <li>Patio privado de unos 25 m² de uso exclusivo</li>
+            <li>Dos dormitorios con baño propio cada uno</li>
+            <li>Cocina independiente separada del salón-comedor</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="unit-acc" name="unidad-acc">
+      <summary><span class="u-left"><span class="u-name">1-1</span><span class="unit-badge badge-disp">2 dormitorios · Primera planta</span></span><span class="u-price">320.000 € · 63,57 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_1-1.jpeg" alt="Plano 1-1"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_1-1.png" alt="1-1" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_1-1_2.png" alt="1-1" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_1-1_3.png" alt="1-1" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Vivienda de dos dormitorios en primera planta, con mucha luminosidad natural. Dos dormitorios con baño propio y cocina independiente.</p>
+          <ul class="offer-list">
+            <li>Luminosidad natural en todas las estancias</li>
+            <li>Dos dormitorios con baño propio cada uno</li>
+            <li>Cocina independiente separada del salón</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="unit-acc" name="unidad-acc">
+      <summary><span class="u-left"><span class="u-name">B-2</span><span class="unit-badge badge-estudio">Estudio · Planta baja</span></span><span class="u-price">174.000 € · 33,67 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_B-2.jpeg" alt="Plano B-2"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_14_B2.png" alt="B-2" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_18_B2.png" alt="B-2" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Estudio de planta abierta en planta baja, pensado para maximizar la sensación de amplitud. Salón, cocina y zona de descanso se integran en una única estancia luminosa.</p>
+          <ul class="offer-list">
+            <li>Acceso directo a patio privado de uso exclusivo</li>
+            <li>Distribución en planta abierta que optimiza cada m²</li>
+            <li>Precio de entrada más accesible de la promoción</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="unit-acc" name="unidad-acc">
+      <summary><span class="u-left"><span class="u-name">1-2</span><span class="unit-badge badge-estudio">Estudio · Primera planta</span></span><span class="u-price">215.500 € · 34,95 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_1-2.jpeg" alt="Plano 1-2"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_1-2.png" alt="1-2" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_1-2_2.png" alt="1-2" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Estudio en primera planta con balcón propio. La distribución abierta integra salón, cocina y zona de descanso, con el balcón como extensión exterior.</p>
+          <ul class="offer-list">
+            <li>Balcón propio como extensión exterior</li>
+            <li>Distribución abierta y eficiente</li>
+            <li>Salón, cocina y descanso integrados en una sola estancia</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="unit-acc" name="unidad-acc">
+      <summary><span class="u-left"><span class="u-name">B-3</span><span class="unit-badge badge-1dorm">1 dormitorio · Planta baja</span></span><span class="u-price">202.000 € · 38,45 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_B-3.jpeg" alt="Plano B-3"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_B3.png" alt="B-3" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_B3-1.png" alt="B-3" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Vivienda de un dormitorio en planta baja con un patio privado de unos 27 m², mayor incluso que la superficie interior de la vivienda. Salón-cocina abierto con conexión visual al patio.</p>
+          <ul class="offer-list">
+            <li>Patio privado de unos 27 m² — más amplio que la propia vivienda</li>
+            <li>Salón-cocina abierto conectado visualmente al patio</li>
+            <li>Distribuidor independiente entre estancias</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="unit-acc" name="unidad-acc">
+      <summary><span class="u-left"><span class="u-name">1-3</span><span class="unit-badge badge-1dorm">1 dormitorio · Primera planta</span></span><span class="u-price">201.000 € · 38,45 m² útiles</span><span class="u-arrow">▾</span></summary>
+      <div class="u-body">
+        <div><img src="img/Plan_Vivienda_1-3.jpeg" alt="Plano 1-3"><div class="unit-photos">
+          <img src="img/IMAGEN_OK_1-3.png" alt="1-3" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_1-3_2.png" alt="1-3" onerror="this.remove()">
+          <img src="img/IMAGEN_OK_1-3_3.png" alt="1-3" onerror="this.remove()">
+        </div></div>
+        <div>
+          <p class="unit-lead">Vivienda de un dormitorio en primera planta con distribución clara y funcional: salón-cocina abierto y dormitorio independiente con acceso directo al baño.</p>
+          <ul class="offer-list">
+            <li>Distribución clara sin espacios desaprovechados</li>
+            <li>Dormitorio independiente con acceso directo al baño</li>
+            <li>Salón-cocina en formato abierto y luminoso</li>
+            <li>Doble acristalamiento Climalit, aislamiento reforzado y puerta blindada lacada</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <p style="font-size:12px;color:var(--charcoal-soft);margin-top:8px;">Superficies según proyecto básico y listado de precios vigente, sujetas a la documentación técnica definitiva. Trastero incluido según vivienda; trasteros adicionales disponibles bajo petición. Precio, disponibilidad y superficie sujetos a actualización sin previo aviso. Las imágenes de planos y renders son representaciones orientativas y no constituyen compromiso contractual.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">¿Qué es una cooperativa de vivienda?</div>
+      <h2>Sin margen de promotor externo</h2>
+      <p>En una cooperativa de vivienda, los futuros propietarios se unen para autopromoverse su vivienda — accediendo al precio de coste real de la construcción, sin el margen de un promotor externo.</p>
+    </div>
+    <div class="coop-grid">
+      <div class="coop-card"><div class="ico">€</div><h4>Sin margen de promotor</h4><p>Precio de coste real. El ahorro frente al mercado libre puede superar el 15–20%.</p></div>
+      <div class="coop-card"><div class="ico">≡</div><h4>Transparencia de costes</h4><p>Acceso a la contabilidad real de la obra: costes y presupuesto visibles para todos los socios, sin márgenes ocultos.</p></div>
+      <div class="coop-card"><div class="ico">⚖</div><h4>Cantidades aseguradas</h4><p>Desde la licencia de obra —ya concedida— todas las aportaciones están aseguradas por ley (Ley 38/1999).</p></div>
+      <div class="coop-card"><div class="ico">◎</div><h4>Control colectivo</h4><p>Los socios participan en las decisiones a través del Consejo Rector y la Asamblea.</p></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--charcoal-soft);margin-top:16px;max-width:760px;">Esta operación tributa al IVA reducido del 10%, el tipo general de la vivienda de obra nueva en España — no es un beneficio exclusivo de la cooperativa, pero sí reduce el coste final frente al 21% de otras operaciones.</p>
+
+    <div id="preguntas" style="margin-top:44px;max-width:820px;">
+      <h3 style="font-size:19px;margin-bottom:16px;">Preguntas frecuentes sobre el modelo cooperativo</h3>
+      <details class="faq-acc" open><summary>¿Es seguro aportar dinero antes de que exista la vivienda?<span class="f-arrow">▾</span></summary><p>Sí: desde la obtención de la licencia de obras —ya concedida en Galaxia 31— todas las cantidades aportadas están aseguradas por ley (Ley 38/1999), igual que en una promoción tradicional.</p></details>
+      <details class="faq-acc"><summary>¿Qué es el capital social de 5.000 €?<span class="f-arrow">▾</span></summary><p>Es una aportación reembolsable, independiente del precio de la vivienda, que da la condición de socio de la cooperativa.</p></details>
+      <details class="faq-acc"><summary>¿En qué se diferencia de comprar a un promotor tradicional?<span class="f-arrow">▾</span></summary><p>El comprador se convierte en socio de la cooperativa que promueve su propia vivienda: paga el coste real de la construcción, con la contabilidad de la obra visible, en lugar del precio de venta de un promotor externo con margen incluido.</p></details>
+      <details class="faq-acc"><summary>¿Cómo funciona el control colectivo de las decisiones?<span class="f-arrow">▾</span></summary><p>Los socios participan a través del Consejo Rector (órgano de gestión elegido entre los socios) y la Asamblea General, donde se aprueban las decisiones relevantes de la cooperativa.</p></details>
+      <details class="faq-acc"><summary>¿Cómo me doy de alta como socio?<span class="f-arrow">▾</span></summary><p>A través de tu agencia inmobiliaria: se formaliza una solicitud de incorporación a la cooperativa y se aporta el capital social junto con el calendario de pagos vigente. Tu agencia te facilita el procedimiento y la documentación exactos.</p></details>
+      <details class="faq-acc"><summary>¿Puedo ceder o vender mi posición antes de que termine la obra?<span class="f-arrow">▾</span></summary><p>En una cooperativa de vivienda esto suele ser posible, sujeto a la aprobación del Consejo Rector y a lo recogido en los estatutos. Las condiciones concretas para Galaxia 31 te las confirma tu agencia.</p></details>
+      <details class="faq-acc"><summary>¿Qué pasa si me quiero dar de baja de la cooperativa?<span class="f-arrow">▾</span></summary><p>Los estatutos de la cooperativa regulan el reembolso del capital social y las aportaciones realizadas en caso de baja. Consulta las condiciones exactas — plazos y posibles descuentos por gastos de gestión — con tu agencia.</p></details>
+      <details class="faq-acc"><summary>¿Quién controla que el dinero de la obra se gestiona correctamente?<span class="f-arrow">▾</span></summary><p>La contabilidad de la obra es visible para todos los socios, y el Consejo Rector rinde cuentas ante la Asamblea General — no hay margen oculto de un promotor externo, como sí lo hay en una promoción tradicional.</p></details>
+      <details class="faq-acc"><summary>¿Cuándo se entrega la vivienda?<span class="f-arrow">▾</span></summary><p>El calendario de obra depende de la planificación del promotor una vez concedida la licencia. Pide a tu agencia el plazo de entrega estimado y actualizado.</p></details>
+      <details class="faq-acc"><summary>¿Tiene esta cooperativa gastos adicionales frente a una compra tradicional?<span class="f-arrow">▾</span></summary><p>Puede haber diferencias en gastos de gestión y notariales respecto a una compraventa tradicional. La documentación oficial de la cooperativa, disponible a través de tu agencia, detalla estos conceptos.</p></details>
+      <details class="faq-acc"><summary>¿Dónde consulto las condiciones exactas del proceso?<span class="f-arrow">▾</span></summary><p>Tu agencia inmobiliaria te facilita la documentación oficial de la cooperativa con las condiciones contractuales definitivas.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Ubicación</div>
+      <h2>Puerto de la Torre — Málaga con precios de barrio</h2>
+      <p>Barrio residencial consolidado de Málaga capital, con todos los servicios esenciales a pie de calle y conexión directa a la autovía A-45.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card"><img src="img/map-proximity.jpg" alt="Servicios cercanos"><div class="cap">Mercadona 6 min · Farmacia 4 min · Colegio Puertosol 7 min · Bus L-21 (→ Teatinos y Centro) 5 min</div></div>
+      <div class="loc-card"><img src="img/map-city.jpg" alt="Conexiones con Málaga"><div class="cap">Centro histórico ~12 min · Aeropuerto ~18 min · Parque Tecnológico ~8 min · Teatinos ~7 min · Playa Malagueta ~15 min</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flogo"><img src="img/logo.jpg" alt="Galaxia 31"><span>GALAXIA 31</span></div>
+    <p style="color:#e4dccb;font-size:14px;font-family:'Fraunces',serif;">¿Es esta tu próxima vivienda? Solicita toda la información — fichas, precios y documentación de la cooperativa — a tu agencia inmobiliaria.</p>
+    <p>Cooperativa de Vivienda · Puerto de la Torre · Málaga. Las imágenes, infografías, renders y planos incluidos en esta página son representaciones orientativas con fines ilustrativos y no constituyen compromiso contractual. La información de esta página es meramente orientativa y no constituye oferta vinculante.</p>
+    <p>De conformidad con el Reglamento (UE) 2016/679 (RGPD), los datos facilitados a través de esta página serán tratados con la finalidad de gestionar el interés en la presente promoción.</p>
+    <details class="legal-note">
+      <summary style="cursor:pointer;">Aviso legal (LSSI-CE)</summary>
+      <p style="margin:10px 0 0;">Este sitio web es operado por <b>Why Malaga Real Estate S.L.</b>, NIF B23976921, con domicilio en Plaza de la Marina 2, 4ºD, 29015 Málaga. Contacto: info@whymalaga.com · +34 615 22 51 95. Inscrita en el Registro Mercantil de Málaga.</p>
+    </details>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('details.unit-acc').forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) {
+        document.querySelectorAll('details.unit-acc').forEach(function(o){ if (o !== d) o.open = false; });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
