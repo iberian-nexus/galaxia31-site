@@ -101,6 +101,7 @@
   .gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:10px;}
   .gallery img{border-radius:var(--radius);height:100%;object-fit:cover;display:block;}
   .gallery .tall{grid-row:span 2;}
+  .gallery-cubierta{grid-template-columns:repeat(4,1fr);}
   .gallery figure{margin:0;}
   .gallery figcaption{font-size:10.5px;color:var(--charcoal-soft);margin-top:5px;}
 
@@ -150,6 +151,7 @@
   @media (max-width: 860px){
     .grid-2, .unit-block, .loc-grid, .coop-grid, .phase-row{grid-template-columns:1fr;}
     .gallery{grid-template-columns:1fr 1fr;}
+    .gallery-cubierta{grid-template-columns:1fr 1fr;}
     .gallery .tall{grid-row:auto;}
     nav.links{display:none;}
     .hero{aspect-ratio:auto;height:70vh;min-height:540px;max-height:640px;}
@@ -206,6 +208,8 @@
       <img class="tall" src="img/patio.jpg" alt="Patio privado">
       <img src="img/interior1.jpg" alt="Interior salón">
       <img src="img/bathroom.jpg" alt="Baño">
+      <img src="img/Entrada%20principal%20por%20la%20tarde.PNG" alt="Entrada principal, Argamasilla 11" onerror="this.remove()">
+      <img src="img/Pasillo.png" alt="Portal y acceso a viviendas" onerror="this.remove()">
       <img src="img/Imagen_07.png" alt="Galaxia 31" onerror="this.remove()">
       <img src="img/Imagen_07_style_transfer01.png" alt="Galaxia 31" onerror="this.remove()">
       <img src="img/Imagen_08.png" alt="Galaxia 31" onerror="this.remove()">
@@ -214,8 +218,13 @@
       <img src="img/Escena%206.png" alt="Galaxia 31" onerror="this.remove()">
     </div>
     <figure style="margin:14px 0 0;">
-      <img src="img/Imagen_04.png" alt="Zona comunitaria en cubierta" style="border-radius:var(--radius);width:100%;">
-      <figcaption style="font-size:10.5px;color:var(--charcoal-soft);margin-top:6px;">Zona comunitaria en cubierta con jacuzzi previsto — imagen orientativa; su incorporación definitiva está sujeta a la decisión final del promotor y no constituye un elemento garantizado del proyecto.</figcaption>
+      <div class="gallery gallery-cubierta">
+        <img src="img/Imagen_04.png" alt="Zona comunitaria en cubierta">
+        <img src="img/Jacuzzi.png" alt="Jacuzzi en cubierta, vista de día" onerror="this.remove()">
+        <img src="img/Jacuzzi%20por%20la%20tarde.png" alt="Jacuzzi en cubierta, atardecer" onerror="this.remove()">
+        <img src="img/Teraza%20por%20la%20tarde.png" alt="Terraza comunitaria, atardecer" onerror="this.remove()">
+      </div>
+      <figcaption style="font-size:10.5px;color:var(--charcoal-soft);margin-top:6px;">Zona comunitaria en cubierta con jacuzzi previsto — imágenes orientativas; su incorporación definitiva está sujeta a la decisión final del promotor y no constituye un elemento garantizado del proyecto.</figcaption>
     </figure>
   </div>
 </section>
@@ -239,6 +248,7 @@
     </div>
     <div>
       <img src="img/Imagen_11.png" alt="Galaxia 31 - fachada" style="border-radius:6px;" onerror="this.remove()">
+      <img src="img/Entrada%20principal.PNG" alt="Galaxia 31 - entrada principal" style="border-radius:6px;margin-top:14px;" onerror="this.remove()">
       <img src="img/Imagen_03.png" alt="Galaxia 31" style="border-radius:6px;margin-top:14px;" onerror="this.remove()">
     </div>
   </div>
